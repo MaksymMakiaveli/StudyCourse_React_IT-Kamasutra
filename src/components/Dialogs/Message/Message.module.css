@@ -1,0 +1,23 @@
+.text_message {
+  display: block;
+  position: relative;
+  font-size: 15px;
+  margin: 20px 0px 0px 0px;
+  padding: 5px 0px 5px 15px;
+  color: rgb(17, 37, 71);
+}
+
+.qad {
+  position: relative;
+}
+.qad::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  width: 120%;
+  height: 100%;
+  background: #000;
+  opacity: 30%;
+  border-radius: 20px;
+}

@@ -30,7 +30,3 @@ const Chats = (props) => {
 };
 
 export default Chats;
-
-// {
-//   return <CreateChats id={d.id} ChatsName={d.name}/>;
-// }

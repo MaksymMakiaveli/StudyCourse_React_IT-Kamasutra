@@ -1,0 +1,35 @@
+.nav {
+  height: 100%;
+  margin: 20px 20px 0px 0px;
+  padding: 20px 25px 20px 25px;
+  /* border-radius: 0px;
+  background: #e0e0e0;
+  box-shadow: -37px -37px 73px #989898, 37px 37px 73px #ffffff; */
+
+  background: rgba(182, 203, 215, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.nav .nav_list {
+  display: flex;
+  flex-direction: column;
+}
+.nav .nav_list .nav_list_items {
+  margin: 10px 0px 0px 0px;
+  font-size: 20px;
+}
+
+.nav .nav_list .nav_list_items a.activeLink {
+  color: rgb(30, 99, 84);
+}
+
+.nav .nav_list .nav_list_items a:visited {
+  color: transparent;
+}
+.nav .nav_list .nav_list_items a:hover {
+  color: rgb(150, 144, 144);
+  transition: 0.5s;
+}

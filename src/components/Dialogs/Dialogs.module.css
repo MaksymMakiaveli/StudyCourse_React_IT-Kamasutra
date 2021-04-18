@@ -1,0 +1,20 @@
+.wrapper_dialogs {
+	display: flex;
+	margin: 50px 0px 0px 100px;
+}
+.container_chats {
+	position: relative;
+	margin: 0px 100px 0px 0px;
+}
+.container_chats::after {
+	content: '';
+	display: block;
+	position: absolute;
+	right: -40px;
+	top: 3px;
+	width: 3px;
+	min-height: 100%;
+	background: #d5d1e3;
+	border-radius: 15%;
+	opacity: 50%;
+}

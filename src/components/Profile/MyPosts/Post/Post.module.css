@@ -1,0 +1,26 @@
+.post {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post_avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  margin: 0px 20px 0px 90px;
+}
+
+.post_text {
+  font-size: 18px;
+  width: 400px;
+  white-space: pre-wrap; /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap; /* Opera <7 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word;
+}

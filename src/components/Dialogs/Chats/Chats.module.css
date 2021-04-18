@@ -1,0 +1,11 @@
+.chats {
+	margin: 20px 0px 0px 0px;
+}
+.chat_message {
+	font-size: 25px;
+	color: rgb(4, 16, 37);
+}
+.chat_message:hover {
+	transition: 0.3s;
+	color: #7d7d7e;
+}

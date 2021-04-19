@@ -7,12 +7,19 @@ const MyPosts = (props) => {
 		return <CreatePost post={post.post} />;
 	});
 
+	let NewPost = React.createRef();
+
+	let addPost = () => {
+		let text = NewPost.current.value;
+		alert(text);
+	};
+
 	return (
 		<div className={MyPostsStyle.wrapper}>
 			<h3 className={MyPostsStyle.title}>My posts</h3>
-			<form>
-				<input className={MyPostsStyle.input}></input>
-				<button formTarget='_self' className={MyPostsStyle.button}>
+			<form className={MyPostsStyle.formMyPost}>
+				<input ref={NewPost} className={MyPostsStyle.input}></input>
+				<button onClick={addPost} formTarget='_self' type='button' className={MyPostsStyle.button}>
 					Send
 				</button>
 			</form>

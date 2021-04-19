@@ -12,12 +12,27 @@ const Dialogs = (props) => {
 		return <CreateChats id={dialog.id} name={dialog.name} />;
 	});
 
+	let newMessage = React.createRef();
+
+	let addNewMessage = () => {
+		let text = newMessage.current.value;
+		alert(text);
+	};
+
 	return (
-		<div className={DialogsStyle.wrapper_dialogs}>
-			<div className={DialogsStyle.container_chats}>{arrChats}</div>
-			<div className={DialogsStyle.container_message}>
-				<div className={DialogsStyle.message}>{arrMessages}</div>
+		<div>
+			<div className={DialogsStyle.wrapper_dialogs}>
+				<div className={DialogsStyle.container_chats}>{arrChats}</div>
+				<div className={DialogsStyle.container_message}>
+					<div className={DialogsStyle.message}>{arrMessages}</div>
+				</div>
 			</div>
+			<form className={DialogsStyle.formMessage}>
+				<input ref={newMessage} className={DialogsStyle.inputMessage}></input>
+				<button onClick={addNewMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
+					Send Message
+				</button>
+			</form>
 		</div>
 	);
 };

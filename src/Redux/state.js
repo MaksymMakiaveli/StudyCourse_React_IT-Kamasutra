@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from '../render';
+
 let state = {
 	profilePage: {
 		DataPost: [
@@ -41,6 +43,16 @@ let state = {
 			},
 		],
 	},
+};
+
+export let addPost = (post) => {
+	let newPost = {
+		id: 5,
+		post: post,
+	};
+
+	state.profilePage.DataPost.push(newPost);
+	rerenderEntireTree(state);
 };
 
 export default state;

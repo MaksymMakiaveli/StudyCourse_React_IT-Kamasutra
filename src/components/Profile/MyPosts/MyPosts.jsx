@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import MyPostsStyle from './MyPosts.module.css';
 import CreatePost from './Post/Post';
@@ -9,9 +10,11 @@ const MyPosts = (props) => {
 
 	let NewPost = React.createRef();
 
-	let addPost = () => {
+	let addPost = (event) => {
+		event.preventDefault();
 		let text = NewPost.current.value;
-		alert(text);
+		props.addPost(text);
+		NewPost.current.value = '';
 	};
 
 	return (

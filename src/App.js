@@ -13,23 +13,21 @@ import { logDOM } from '@testing-library/dom';
 
 const App = (props) => {
 	return (
-		<BrowserRouter>
-			<div className='app-wrapper'>
-				<Header />
-				<div className='content-wrapper'>
-					<div className='cont-nav'>
-						<Navbar state={props.state.siteBar} />
-					</div>
-					<div className='cont-content'>
-						<Route path='/profile' render={() => <Profile state={props.state.profilePage} />} />
-						<Route path='/dialogs' render={() => <Dialogs state={props.state.messagePage} />} />
-						<Route path='/news' render={() => <News />} />
-						<Route path='/music' render={() => <Music />} />
-						<Route path='/settings' render={() => <Settings />} />
-					</div>
+		<div className='app-wrapper'>
+			<Header />
+			<div className='content-wrapper'>
+				<div className='cont-nav'>
+					<Navbar state={props.state.siteBar} />
+				</div>
+				<div className='cont-content'>
+					<Route path='/profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost} />} />
+					<Route path='/dialogs' render={() => <Dialogs state={props.state.messagePage} />} />
+					<Route path='/news' render={() => <News />} />
+					<Route path='/music' render={() => <Music />} />
+					<Route path='/settings' render={() => <Settings />} />
 				</div>
 			</div>
-		</BrowserRouter>
+		</div>
 	);
 };
 

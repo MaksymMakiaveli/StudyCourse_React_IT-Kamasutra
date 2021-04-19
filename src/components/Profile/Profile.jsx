@@ -13,7 +13,7 @@ const Profile = (props) => {
 					src='https://image.freepik.com/free-vector/leaves-background-with-metallic-foil_79603-956.jpg'></img>
 			</div>
 			<AvatarPlusDescription />
-			<MyPosts posts={props.state.DataPost} />
+			<MyPosts posts={props.state.DataPost} addPost={props.addPost} />
 		</div>
 	);
 };

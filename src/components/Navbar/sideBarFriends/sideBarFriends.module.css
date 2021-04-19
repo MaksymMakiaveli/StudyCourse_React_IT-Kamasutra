@@ -1,0 +1,24 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	margin: 20px 0 0 0;
+}
+
+.avatar {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 0 20px 0 0;
+}
+
+.nickname {
+	font-size: 17px;
+	color: rgba(57, 55, 200, 1);
+	transition: 0.5s;
+	position: relative;
+}
+
+.nickname:hover {
+	color: rgba(99, 98, 158, 0.89);
+}

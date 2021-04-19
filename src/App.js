@@ -18,11 +18,11 @@ const App = (props) => {
 				<Header />
 				<div className='content-wrapper'>
 					<div className='cont-nav'>
-						<Navbar />
+						<Navbar state={props.state.siteBar} />
 					</div>
 					<div className='cont-content'>
-						<Route path='/profile' render={() => <Profile DataPost={props.DataPost} />} />
-						<Route path='/dialogs' render={() => <Dialogs DataMessages={props.DataMessages} DataChats={props.DataChats} />} />
+						<Route path='/profile' render={() => <Profile state={props.state.profilePage} />} />
+						<Route path='/dialogs' render={() => <Dialogs state={props.state.messagePage} />} />
 						<Route path='/news' render={() => <News />} />
 						<Route path='/music' render={() => <Music />} />
 						<Route path='/settings' render={() => <Settings />} />

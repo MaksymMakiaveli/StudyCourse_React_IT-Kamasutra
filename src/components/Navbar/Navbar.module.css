@@ -1,35 +1,48 @@
 .nav {
-  height: 100%;
-  margin: 20px 20px 0px 0px;
-  padding: 20px 25px 20px 25px;
-  /* border-radius: 0px;
+	height: 100%;
+	margin: 20px 20px 0px 0px;
+	padding: 20px 25px 20px 25px;
+	/* border-radius: 0px;
   background: #e0e0e0;
   box-shadow: -37px -37px 73px #989898, 37px 37px 73px #ffffff; */
 
-  background: rgba(182, 203, 215, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+	background: rgba(182, 203, 215, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .nav .nav_list {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	margin: 0px 0px 40px 0px;
 }
 .nav .nav_list .nav_list_items {
-  margin: 10px 0px 0px 0px;
-  font-size: 20px;
+	margin: 10px 0px 0px 0px;
+	font-size: 20px;
 }
 
 .nav .nav_list .nav_list_items a.activeLink {
-  color: rgb(30, 99, 84);
+	color: rgb(30, 99, 84);
 }
 
 .nav .nav_list .nav_list_items a:visited {
-  color: transparent;
+	color: transparent;
 }
 .nav .nav_list .nav_list_items a:hover {
-  color: rgb(150, 144, 144);
-  transition: 0.5s;
+	color: rgb(150, 144, 144);
+	transition: 0.5s;
+}
+
+.nav h3 {
+	font-size: 25px;
+}
+
+.nav h3::after {
+	content: 'Online';
+	font-size: 10px;
+	padding: 0 0 20px 0;
+	margin: 0 0 0 5px;
+	color: rgba(140, 219, 36, 0.849);
 }

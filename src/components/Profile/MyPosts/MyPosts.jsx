@@ -3,7 +3,7 @@ import MyPostsStyle from './MyPosts.module.css';
 import CreatePost from './Post/Post';
 
 const MyPosts = (props) => {
-	let postsElements = props.DataPost.map((post) => {
+	let arrPosts = props.posts.map((post) => {
 		return <CreatePost post={post.post} />;
 	});
 
@@ -16,7 +16,7 @@ const MyPosts = (props) => {
 					Send
 				</button>
 			</form>
-			<div>{postsElements}</div>
+			<div>{arrPosts}</div>
 		</div>
 	);
 };

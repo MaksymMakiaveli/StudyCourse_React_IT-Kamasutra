@@ -5,10 +5,10 @@ import DialogsStyle from './Dialogs.module.css';
 import { render } from '@testing-library/react';
 
 const Dialogs = (props) => {
-	let arrMessages = props.DataMessages.map((message) => {
+	let arrMessages = props.state.DataMessage.map((message) => {
 		return <СreateMessages messages={message.messages} />;
 	});
-	let arrChats = props.DataChats.map((dialog) => {
+	let arrChats = props.state.DataChats.map((dialog) => {
 		return <CreateChats id={dialog.id} name={dialog.name} />;
 	});
 

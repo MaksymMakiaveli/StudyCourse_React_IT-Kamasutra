@@ -5,18 +5,21 @@ import DialogsStyle from './Dialogs.module.css';
 import { render } from '@testing-library/react';
 
 const Dialogs = (props) => {
-	let arrMessages = props.state.DataMessage.map((message) => {
+	let arrMessages = props.messagePage.DataMessage.map((message) => {
 		return <СreateMessages messages={message.messages} />;
 	});
-	let arrChats = props.state.DataChats.map((dialog) => {
+	let arrChats = props.messagePage.DataChats.map((dialog) => {
 		return <CreateChats id={dialog.id} name={dialog.name} />;
 	});
 
-	let newMessage = React.createRef();
+	let NewMessage = React.createRef();
 
-	let addNewMessage = () => {
-		let text = newMessage.current.value;
-		alert(text);
+	let addMessage = () => {
+		props.addMessage();
+	};
+	let onMessageChange = () => {
+		let sms = NewMessage.current.value;
+		props.updateNewMessageText(sms);
 	};
 
 	return (
@@ -28,8 +31,13 @@ const Dialogs = (props) => {
 				</div>
 			</div>
 			<form className={DialogsStyle.formMessage}>
-				<input ref={newMessage} className={DialogsStyle.inputMessage}></input>
-				<button onClick={addNewMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
+				<input
+					onChange={onMessageChange}
+					ref={NewMessage}
+					className={DialogsStyle.inputMessage}
+					value={props.messagePage.newMessageText}
+				/>
+				<button onClick={addMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
 					Send Message
 				</button>
 			</form>

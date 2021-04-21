@@ -1,4 +1,6 @@
-import { rerenderEntireTree } from '../render';
+let getRerender = () => {
+	console.log('change state');
+};
 
 let state = {
 	profilePage: {
@@ -7,6 +9,7 @@ let state = {
 			{ id: 2, post: "It's my first post" },
 			{ id: 3, post: 'Yo' },
 		],
+		newPostText: 'Post...',
 	},
 
 	messagePage: {
@@ -15,6 +18,7 @@ let state = {
 			{ id: 2, messages: 'How are you?' },
 			{ id: 3, messages: 'Yo' },
 		],
+
 		DataChats: [
 			{ id: 1, name: 'Maks' },
 			{ id: 2, name: 'Dimych' },
@@ -22,6 +26,8 @@ let state = {
 			{ id: 4, name: 'Alex' },
 			{ id: 5, name: 'Philip' },
 		],
+
+		newMessageText: 'Message....',
 	},
 
 	siteBar: {
@@ -45,14 +51,40 @@ let state = {
 	},
 };
 
-export let addPost = (post) => {
+export const addPost = () => {
 	let newPost = {
 		id: 5,
-		post: post,
+		post: state.profilePage.newPostText,
 	};
 
 	state.profilePage.DataPost.push(newPost);
-	rerenderEntireTree(state);
+	state.profilePage.newPostText = '';
+	getRerender(state);
+};
+
+export const updateNewPostText = (newText) => {
+	state.profilePage.newPostText = newText;
+	getRerender(state);
+};
+
+export const addMessage = () => {
+	let newMessage = {
+		id: 4,
+		messages: state.messagePage.newMessageText,
+	};
+
+	state.messagePage.DataMessage.push(newMessage);
+	state.messagePage.newMessageText = '';
+	getRerender(state);
+};
+
+export const updateNewMessageText = (newSms) => {
+	state.messagePage.newMessageText = newSms;
+	getRerender(state);
+};
+
+export const subscribe = (observer) => {
+	getRerender = observer;
 };
 
 export default state;

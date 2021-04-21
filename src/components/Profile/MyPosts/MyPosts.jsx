@@ -10,22 +10,26 @@ const MyPosts = (props) => {
 
 	let NewPost = React.createRef();
 
-	let addPost = (event) => {
-		event.preventDefault();
+	let addPost = () => {
+		props.addPost();
+		props.updateNewPostText('');
+	};
+
+	let onPostChange = () => {
 		let text = NewPost.current.value;
-		props.addPost(text);
-		NewPost.current.value = '';
+		props.updateNewPostText(text);
 	};
 
 	return (
 		<div className={MyPostsStyle.wrapper}>
 			<h3 className={MyPostsStyle.title}>My posts</h3>
 			<form className={MyPostsStyle.formMyPost}>
-				<input ref={NewPost} className={MyPostsStyle.input}></input>
+				<input onChange={onPostChange} ref={NewPost} className={MyPostsStyle.input} value={props.newPostText} />
 				<button onClick={addPost} formTarget='_self' type='button' className={MyPostsStyle.button}>
 					Send
 				</button>
 			</form>
+
 			<div>{arrPosts}</div>
 		</div>
 	);

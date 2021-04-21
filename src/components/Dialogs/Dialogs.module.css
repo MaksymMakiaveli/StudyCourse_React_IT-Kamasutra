@@ -30,6 +30,18 @@
 	opacity: 50%;
 }
 
+.message {
+	height: 200px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scrollbar-width: none;
+	position: relative;
+}
+.message::-webkit-scrollbar {
+	display: none;
+	width: 0px;
+}
+
 .formMessage {
 	display: flex;
 }

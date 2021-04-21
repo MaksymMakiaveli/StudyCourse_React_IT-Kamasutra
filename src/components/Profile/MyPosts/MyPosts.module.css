@@ -7,21 +7,22 @@
 }
 
 .formMyPost {
+	width: 80%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: end;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 20px;
 }
 .input {
-	width: 80%;
 	height: 70px;
-	margin: 30px 140px 30px 100px;
 	padding: 0px 0px 30px 10px;
 	border-radius: 10px;
 }
 
 .button {
+	margin: 20px 0px 0px 0px ;
 	padding: 20px 50px 20px 50px;
-	margin: 0px 140px 0px 0px;
 	box-shadow: 0px 10px 14px -7px #276873;
 	background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
 	background-color: #599bb3;
@@ -35,4 +36,5 @@
 	padding: 13px 32px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #3d768a;
+	align-self: flex-end;
 }

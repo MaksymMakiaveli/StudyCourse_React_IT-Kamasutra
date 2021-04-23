@@ -4,8 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import state, { subscribe } from './Redux/state';
-import { addMessage, addPost, updateNewMessageText, updateNewPostText } from './Redux/state';
+import store from './Redux/state';
 
 let rerenderEntireTree = (state) => {
 	ReactDOM.render(
@@ -13,18 +12,18 @@ let rerenderEntireTree = (state) => {
 			<BrowserRouter>
 				<App
 					state={state}
-					addPost={addPost}
-					updateNewPostText={updateNewPostText}
-					addMessage={addMessage}
-					updateNewMessageText={updateNewMessageText}
+					addPost={store.addPost.bind(store)}
+					updateNewPostText={store.updateNewPostText.bind(store)}
+					addMessage={store.addMessage.bind(store)}
+					updateNewMessageText={store.updateNewMessageText.bind(store)}
 				/>
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 };
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 reportWebVitals();

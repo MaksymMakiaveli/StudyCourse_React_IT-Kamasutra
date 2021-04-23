@@ -14,7 +14,7 @@ const Profile = (props) => {
 			</div>
 			<AvatarPlusDescription />
 			<MyPosts
-				posts={props.profilePage.DataPost}
+				DataPost={props.profilePage.DataPost}
 				addPost={props.addPost}
 				newPostText={props.profilePage.newPostText}
 				updateNewPostText={props.updateNewPostText}

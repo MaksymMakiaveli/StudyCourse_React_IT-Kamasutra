@@ -1,10 +1,9 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import MyPostsStyle from './MyPosts.module.css';
 import CreatePost from './Post/Post';
 
 const MyPosts = (props) => {
-	let arrPosts = props.posts.map((post) => {
+	let arrPosts = props.DataPost.map((post) => {
 		return <CreatePost post={post.post} />;
 	});
 

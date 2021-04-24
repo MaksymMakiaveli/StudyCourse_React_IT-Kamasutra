@@ -1,3 +1,10 @@
+// ! Post
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+// ! Message
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
 	_state: {
 		profilePage: {
@@ -46,47 +53,53 @@ let store = {
 			],
 		},
 	},
-
+	// ! render function
+	_getRerender() {
+		console.log('Change this');
+	},
+	subscribe(observer) {
+		this._getRerender = observer;
+	},
 	// ! get state
 	getState() {
 		return this._state;
 	},
-	// ! added post
-	addPost() {
-		let newPost = {
-			id: 5,
-			post: this._state.profilePage.newPostText,
-		};
-		this._state.profilePage.DataPost.push(newPost);
-		this._state.profilePage.newPostText = '';
-		this.getRerender(this._state);
-	},
-	updateNewPostText(newText) {
-		this._state.profilePage.newPostText = newText;
-		this.getRerender(this._state);
-	},
-	// ! added message
-	addMessage() {
-		let newMessage = {
-			id: 4,
-			messages: this._state.messagePage.newMessageText,
-		};
 
-		this._state.messagePage.DataMessage.push(newMessage);
-		this._state.messagePage.newMessageText = '';
-		this.getRerender(this._state);
-	},
-	updateNewMessageText(newSms) {
-		this._state.messagePage.newMessageText = newSms;
-		this.getRerender(this._state);
-	},
-	// ! render function
-	getRerender() {
-		console.log('Change this');
-	},
-	subscribe(observer) {
-		this.getRerender = observer;
+	dispatch(action) {
+		// ! add post
+		if (action.type === ADD_POST) {
+			let newPost = {
+				id: 5,
+				post: this._state.profilePage.newPostText,
+			};
+			this._state.profilePage.DataPost.push(newPost);
+			this._state.profilePage.newPostText = '';
+			this._getRerender(this._state);
+		} else if (action.type === UPDATE_NEW_POST_TEXT) {
+			this._state.profilePage.newPostText = action.newText;
+			this._getRerender(this._state);
+		}
+		// ! add message
+		if (action.type === ADD_MESSAGE) {
+			let newMessage = {
+				id: 4,
+				messages: this._state.messagePage.newMessageText,
+			};
+
+			this._state.messagePage.DataMessage.push(newMessage);
+			this._state.messagePage.newMessageText = '';
+			this._getRerender(this._state);
+		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+			this._state.messagePage.newMessageText = action.newSms;
+			this._getRerender(this._state);
+		}
 	},
 };
+// ! action creator post
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+// ! action creator message
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export const updateNewMessageTextActionCreator = (sms) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newSms: sms });
 
 export default store;

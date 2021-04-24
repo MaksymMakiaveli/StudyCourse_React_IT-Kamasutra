@@ -5,9 +5,9 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
+import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-import News from './components/News/News';
 
 const App = (props) => {
 	return (
@@ -20,23 +20,11 @@ const App = (props) => {
 				<div className='cont-content'>
 					<Route
 						path='/profile'
-						render={() => (
-							<Profile
-								profilePage={props.state.profilePage}
-								addPost={props.addPost}
-								updateNewPostText={props.updateNewPostText}
-							/>
-						)}
+						render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />}
 					/>
 					<Route
 						path='/dialogs'
-						render={() => (
-							<Dialogs
-								messagePage={props.state.messagePage}
-								addMessage={props.addMessage}
-								updateNewMessageText={props.updateNewMessageText}
-							/>
-						)}
+						render={() => <Dialogs messagePage={props.state.messagePage} dispatch={props.dispatch} />}
 					/>
 					<Route path='/news' render={() => <News />} />
 					<Route path='/music' render={() => <Music />} />

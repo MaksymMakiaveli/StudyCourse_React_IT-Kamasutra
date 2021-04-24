@@ -1,8 +1,8 @@
 import React from 'react';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../Redux/state';
 import CreateChats from './Chats/Chats';
-import СreateMessages from './Message/Message';
 import DialogsStyle from './Dialogs.module.css';
-import { render } from '@testing-library/react';
+import СreateMessages from './Message/Message';
 
 const Dialogs = (props) => {
 	let arrMessages = props.messagePage.DataMessage.map((message) => {
@@ -15,11 +15,11 @@ const Dialogs = (props) => {
 	let NewMessage = React.createRef();
 
 	let addMessage = () => {
-		props.addMessage();
+		props.dispatch(addMessageActionCreator());
 	};
 	let onMessageChange = () => {
 		let sms = NewMessage.current.value;
-		props.updateNewMessageText(sms);
+		props.dispatch(updateNewMessageTextActionCreator(sms));
 	};
 
 	return (

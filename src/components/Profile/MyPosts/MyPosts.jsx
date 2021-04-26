@@ -7,9 +7,14 @@ const MyPosts = (props) => {
 	let arrPosts = props.DataPost.map((post) => {
 		return <CreatePost post={post.post} />;
 	});
+	let newPostText = props.newPostText;
 
 	let addPost = () => {
-		props.dispatch(addPostActionCreator());
+		if (newPostText === '') {
+			alert('Введите буквы в поле ввода');
+		} else {
+			props.dispatch(addPostActionCreator());
+		}
 	};
 
 	let onPostChange = (e) => {
@@ -21,7 +26,7 @@ const MyPosts = (props) => {
 		<div className={MyPostsStyle.wrapper}>
 			<h3 className={MyPostsStyle.title}>My posts</h3>
 			<form className={MyPostsStyle.formMyPost}>
-				<input onChange={onPostChange} className={MyPostsStyle.input} value={props.newPostText} />
+				<input onChange={onPostChange} className={MyPostsStyle.input} value={newPostText} placeholder='Post...' />
 				<button onClick={addPost} formTarget='_self' type='button' className={MyPostsStyle.button}>
 					Send
 				</button>

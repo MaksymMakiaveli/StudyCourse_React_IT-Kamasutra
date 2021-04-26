@@ -14,7 +14,11 @@ const Dialogs = (props) => {
 	let newMessageText = props.messagePage.newMessageText;
 
 	let addMessage = () => {
-		props.dispatch(addMessageActionCreator());
+		if (newMessageText === '') {
+			alert('Введите буквы в поле ввода');
+		} else {
+			props.dispatch(addMessageActionCreator());
+		}
 	};
 	let onMessageChange = (e) => {
 		let sms = e.target.value;
@@ -30,7 +34,12 @@ const Dialogs = (props) => {
 				</div>
 			</div>
 			<form className={DialogsStyle.formMessage}>
-				<input onChange={onMessageChange} className={DialogsStyle.inputMessage} value={newMessageText} />
+				<input
+					onChange={onMessageChange}
+					className={DialogsStyle.inputMessage}
+					value={newMessageText}
+					placeholder='Message...'
+				/>
 				<button onClick={addMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
 					Send Message
 				</button>

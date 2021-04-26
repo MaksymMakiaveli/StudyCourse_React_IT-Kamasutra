@@ -1,5 +1,5 @@
 import React from 'react';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../Redux/state';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../Redux/profile-reducer';
 import MyPostsStyle from './MyPosts.module.css';
 import CreatePost from './Post/Post';
 
@@ -8,14 +8,12 @@ const MyPosts = (props) => {
 		return <CreatePost post={post.post} />;
 	});
 
-	let NewPost = React.createRef();
-
 	let addPost = () => {
 		props.dispatch(addPostActionCreator());
 	};
 
-	let onPostChange = () => {
-		let text = NewPost.current.value;
+	let onPostChange = (e) => {
+		let text = e.target.value;
 		props.dispatch(updateNewPostTextActionCreator(text));
 	};
 
@@ -23,7 +21,7 @@ const MyPosts = (props) => {
 		<div className={MyPostsStyle.wrapper}>
 			<h3 className={MyPostsStyle.title}>My posts</h3>
 			<form className={MyPostsStyle.formMyPost}>
-				<input onChange={onPostChange} ref={NewPost} className={MyPostsStyle.input} value={props.newPostText} />
+				<input onChange={onPostChange} className={MyPostsStyle.input} value={props.newPostText} />
 				<button onClick={addPost} formTarget='_self' type='button' className={MyPostsStyle.button}>
 					Send
 				</button>

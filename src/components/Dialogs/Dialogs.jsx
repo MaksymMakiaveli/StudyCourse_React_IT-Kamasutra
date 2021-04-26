@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../Redux/state';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../Redux/dialogs-reducer';
 import CreateChats from './Chats/Chats';
 import DialogsStyle from './Dialogs.module.css';
 import СreateMessages from './Message/Message';
@@ -11,14 +11,13 @@ const Dialogs = (props) => {
 	let arrChats = props.messagePage.DataChats.map((dialog) => {
 		return <CreateChats id={dialog.id} name={dialog.name} />;
 	});
-
-	let NewMessage = React.createRef();
+	let newMessageText = props.messagePage.newMessageText;
 
 	let addMessage = () => {
 		props.dispatch(addMessageActionCreator());
 	};
-	let onMessageChange = () => {
-		let sms = NewMessage.current.value;
+	let onMessageChange = (e) => {
+		let sms = e.target.value;
 		props.dispatch(updateNewMessageTextActionCreator(sms));
 	};
 
@@ -31,12 +30,7 @@ const Dialogs = (props) => {
 				</div>
 			</div>
 			<form className={DialogsStyle.formMessage}>
-				<input
-					onChange={onMessageChange}
-					ref={NewMessage}
-					className={DialogsStyle.inputMessage}
-					value={props.messagePage.newMessageText}
-				/>
+				<input onChange={onMessageChange} className={DialogsStyle.inputMessage} value={newMessageText} />
 				<button onClick={addMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
 					Send Message
 				</button>

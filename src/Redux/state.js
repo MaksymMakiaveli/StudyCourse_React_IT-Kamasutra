@@ -1,9 +1,6 @@
-// ! Post
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-// ! Message
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import dialogsReducer from './dialogs-reducer';
+import profileReducer from './profile-reducer';
+import siteBarReducer from './siteBar-reducer';
 
 let store = {
 	_state: {
@@ -66,40 +63,12 @@ let store = {
 	},
 
 	dispatch(action) {
-		// ! add post
-		if (action.type === ADD_POST) {
-			let newPost = {
-				id: 5,
-				post: this._state.profilePage.newPostText,
-			};
-			this._state.profilePage.DataPost.push(newPost);
-			this._state.profilePage.newPostText = '';
-			this._getRerender(this._state);
-		} else if (action.type === UPDATE_NEW_POST_TEXT) {
-			this._state.profilePage.newPostText = action.newText;
-			this._getRerender(this._state);
-		}
-		// ! add message
-		if (action.type === ADD_MESSAGE) {
-			let newMessage = {
-				id: 4,
-				messages: this._state.messagePage.newMessageText,
-			};
+		this._state.profilePage = profileReducer(this._state.profilePage, action);
+		this._state.messagePage = dialogsReducer(this._state.messagePage, action);
+		this._state.siteBar = siteBarReducer(this._state.siteBar, action);
 
-			this._state.messagePage.DataMessage.push(newMessage);
-			this._state.messagePage.newMessageText = '';
-			this._getRerender(this._state);
-		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-			this._state.messagePage.newMessageText = action.newSms;
-			this._getRerender(this._state);
-		}
+		this._getRerender(this._state);
 	},
 };
-// ! action creator post
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-// ! action creator message
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const updateNewMessageTextActionCreator = (sms) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newSms: sms });
 
 export default store;

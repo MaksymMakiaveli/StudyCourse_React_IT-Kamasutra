@@ -5,24 +5,20 @@ import DialogsStyle from './Dialogs.module.css';
 import СreateMessages from './Message/Message';
 
 const Dialogs = (props) => {
-	let arrMessages = props.messagePage.DataMessage.map((message) => {
+	let arrMessages = props.DataMessage.map((message) => {
 		return <СreateMessages messages={message.messages} />;
 	});
-	let arrChats = props.messagePage.DataChats.map((dialog) => {
+	let arrChats = props.DataChats.map((dialog) => {
 		return <CreateChats id={dialog.id} name={dialog.name} />;
 	});
-	let newMessageText = props.messagePage.newMessageText;
+	let newMessageText = props.newMessageText;
 
 	let addMessage = () => {
-		if (newMessageText === '') {
-			alert('Введите буквы в поле ввода');
-		} else {
-			props.dispatch(addMessageActionCreator());
-		}
+		props.addMessage();
 	};
 	let onMessageChange = (e) => {
 		let sms = e.target.value;
-		props.dispatch(updateNewMessageTextActionCreator(sms));
+		props.onMessageChange(sms);
 	};
 
 	return (

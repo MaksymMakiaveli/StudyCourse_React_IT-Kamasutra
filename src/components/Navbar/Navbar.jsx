@@ -4,7 +4,7 @@ import NavbarStyles from './Navbar.module.css';
 import SideBarFriends from './sideBarFriends/sideBarFriends';
 
 const Navbar = (props) => {
-	let arrSiteBar = props.siteBar.DataFriends.map((element) => {
+	let arrSiteBar = props.DataFriends.map((element) => {
 		return <SideBarFriends name={element.name} avatar={element.avatar} />;
 	});
 	return (

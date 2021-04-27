@@ -7,19 +7,16 @@ const MyPosts = (props) => {
 	let arrPosts = props.DataPost.map((post) => {
 		return <CreatePost post={post.post} />;
 	});
+
 	let newPostText = props.newPostText;
 
 	let addPost = () => {
-		if (newPostText === '') {
-			alert('Введите буквы в поле ввода');
-		} else {
-			props.dispatch(addPostActionCreator());
-		}
+		props.addPost();
 	};
 
 	let onPostChange = (e) => {
 		let text = e.target.value;
-		props.dispatch(updateNewPostTextActionCreator(text));
+		props.onPostChange(text);
 	};
 
 	return (

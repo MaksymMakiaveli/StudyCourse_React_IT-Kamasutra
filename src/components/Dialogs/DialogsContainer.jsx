@@ -1,38 +1,26 @@
 import React from 'react';
-import StoreContext from '../../StoreContext';
+import { connect } from 'react-redux';
 import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../Redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 
-const DialogsContainer = () => {
-	return (
-		<StoreContext.Consumer>
-			{(store) => {
-				let state = store.getState();
-
-				let newMessageText = state.messagePage.newMessageText;
-
-				let addMessage = () => {
-					if (newMessageText === '') {
-						alert('Введите буквы в поле ввода');
-					} else {
-						store.dispatch(addMessageActionCreator());
-					}
-				};
-				let onMessageChange = (sms) => {
-					store.dispatch(updateNewMessageTextActionCreator(sms));
-				};
-				return (
-					<Dialogs
-						addMessage={addMessage}
-						onMessageChange={onMessageChange}
-						newMessageText={newMessageText}
-						DataMessage={state.messagePage.DataMessage}
-						DataChats={state.messagePage.DataChats}
-					/>
-				);
-			}}
-		</StoreContext.Consumer>
-	);
+let mapStateToProps = (state) => {
+	return {
+		DataMessage: state.messagePage.DataMessage,
+		DataChats: state.messagePage.DataChats,
+		newMessageText: state.messagePage.newMessageText,
+	};
 };
+let mapDispatchToProps = (dispatch) => {
+	return {
+		addMessage: () => {
+			dispatch(addMessageActionCreator());
+		},
+		onMessageChange: (sms) => {
+			dispatch(updateNewMessageTextActionCreator(sms));
+		},
+	};
+};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

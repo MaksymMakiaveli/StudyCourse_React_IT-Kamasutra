@@ -31,8 +31,13 @@ const Navbar = (props) => {
 					</NavLink>
 				</li>
 				<li className={NavbarStyles.nav_list_items}>
-					<NavLink to='settings' activeClassName={NavbarStyles.activeLink}>
+					<NavLink to='/settings' activeClassName={NavbarStyles.activeLink}>
 						Settings
+					</NavLink>
+				</li>
+				<li className={NavbarStyles.nav_list_items}>
+					<NavLink to='/users' activeClassName={NavbarStyles.activeLink}>
+						Users
 					</NavLink>
 				</li>
 			</ul>

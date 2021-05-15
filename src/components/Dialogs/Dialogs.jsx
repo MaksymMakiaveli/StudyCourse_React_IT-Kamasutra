@@ -13,7 +13,8 @@ const Dialogs = (props) => {
 	});
 	let newMessageText = props.newMessageText;
 
-	let addMessage = () => {
+	let addMessage = (e) => {
+		e.preventDefault();
 		props.addMessage();
 	};
 	let onMessageChange = (e) => {
@@ -29,14 +30,14 @@ const Dialogs = (props) => {
 					<div className={DialogsStyle.message}>{arrMessages}</div>
 				</div>
 			</div>
-			<form className={DialogsStyle.formMessage}>
+			<form className={DialogsStyle.formMessage} onSubmit={addMessage}>
 				<input
 					onChange={onMessageChange}
 					className={DialogsStyle.inputMessage}
 					value={newMessageText}
 					placeholder='Message...'
 				/>
-				<button onClick={addMessage} formTarget='_self' type='button' className={DialogsStyle.buttonMessage}>
+				<button formTarget='_self' type='submit' className={DialogsStyle.buttonMessage}>
 					Send Message
 				</button>
 			</form>

@@ -7,6 +7,16 @@
 .grid_container{
     padding: 0 0 30px 0;
 }
+
+.pagination {
+    margin-right: 10px;
+    color: #000;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
 .wrapper_user{
     display: grid;
     grid-template-columns: 15% 50% ;
@@ -21,6 +31,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    object-fit: cover;
 
     justify-self: center;
 

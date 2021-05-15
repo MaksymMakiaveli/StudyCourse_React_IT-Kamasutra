@@ -11,24 +11,24 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
-	return (
-		<div className='app-wrapper'>
-			<Header />
-			<div className='content-wrapper'>
-				<div className='cont-nav'>
-					<NavbarContainer />
-				</div>
-				<div className='cont-content'>
-					<Route path='/profile' render={() => <Profile />} />
-					<Route path='/dialogs' render={() => <DialogsContainer />} />
-					<Route path='/news' render={() => <News />} />
-					<Route path='/music' render={() => <Music />} />
-					<Route path='/users' render={() => <UsersContainer />} />
-					<Route path='/settings' render={() => <Settings />} />
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className='app-wrapper'>
+      <Header />
+      <div className='content-wrapper'>
+        <div className='cont-nav'>
+          <NavbarContainer />
+        </div>
+        <div className='cont-content'>
+          <Route path='/profile' render={() => <Profile />} />
+          <Route path='/dialogs' render={() => <DialogsContainer />} />
+          <Route path='/news' render={() => <News />} />
+          <Route path='/music' render={() => <Music />} />
+          <Route path='/users' render={() => <UsersContainer />} />
+          <Route path='/settings' render={() => <Settings />} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default App;

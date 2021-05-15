@@ -1,71 +1,61 @@
-// ! Post
+// ! Users
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
-	users: [
-		{
-			id: 1,
-			followed: false,
-			avatar:
-				'https://cdn22.img.ria.ru/images/07e4/06/08/1572627905_399:0:2327:1446_1920x0_80_0_0_80e3f5c4eaa3c081a8da99f8dbe705fc.jpg',
-			fullname: 'Dimych',
-			status: 'hey my friend',
-			location: { city: 'Moscow', country: 'Russia' },
-		},
-		{
-			id: 2,
-			followed: true,
-			avatar: 'https://pbs.twimg.com/profile_images/806556723410599938/jf10BYhC.jpg',
-			fullname: 'Karina',
-			status: 'YOYOYO',
-			location: { city: 'Vinnitsa', country: 'Ukraine' },
-		},
-		{
-			id: 3,
-			followed: false,
-			avatar: 'https://mainstyles.ru/uploads/material-image/Skubi-Du_2020_vyshel_onlayn_i_razocharoval.jpg',
-			fullname: 'Sasha',
-			status: 'KKABZDA KAK PROSTO',
-			location: { city: 'Minsk', country: 'Belarus' },
-		},
-	],
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
-	// ! add post
-	switch (action.type) {
-		case FOLLOW:
-			return {
-				...state,
-				users: state.users.map((user) => {
-					if (user.id === action.userId) {
-						return { ...user, followed: true };
-					}
-					return user;
-				}),
-			};
-		case UNFOLLOW:
-			return {
-				...state,
-				users: state.users.map((user) => {
-					if (user.id === action.userId) {
-						return { ...user, followed: false };
-					}
-					return user;
-				}),
-			};
-		case SET_USERS:
-			return { ...state, users: [...state.users, ...action.users] };
+  // ! users reducer
+  switch (action.type) {
+    case FOLLOW:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === action.userId) {
+            return { ...user, followed: true };
+          }
+          return user;
+        }),
+      };
+    case UNFOLLOW:
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === action.userId) {
+            return { ...user, followed: false };
+          }
+          return user;
+        }),
+      };
+    case SET_USERS:
+      return { ...state, users: action.users };
+    case SET_CURRENT_PAGE:
+      return { ...state, currentPage: action.currentPage };
+    case SET_TOTAL_USERS_COUNT:
+      return { ...state, totalUsersCount: action.count };
+    case TOGGLE_IS_FETCHING:
+      return { ...state, isFetching: action.isFetching };
 
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 };
 
-// ! action creator post
+// ! action creator users
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount });
+export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export default usersReducer;

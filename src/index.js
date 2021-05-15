@@ -7,18 +7,13 @@ import './index.css';
 import store from './Redux/redux-store';
 import reportWebVitals from './reportWebVitals';
 
-let rerenderEntireTree = () => {
-	ReactDOM.render(
-		<React.StrictMode>
-			<BrowserRouter>
-				<Provider store={store}>
-					<App />
-				</Provider>
-			</BrowserRouter>
-		</React.StrictMode>,
-		document.getElementById('root')
-	);
-};
-rerenderEntireTree();
+ReactDOM.render(
+	<BrowserRouter>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</BrowserRouter>,
+	document.getElementById('root')
+);
 
 reportWebVitals();

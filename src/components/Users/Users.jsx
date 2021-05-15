@@ -1,49 +1,63 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Style from './Users.module.css';
+import cl from 'classnames';
+import userPhoto from './../../assets/images/51f6fb256629fc755b8870c801092942.png';
 
-let Users = (props) => {
-	return (
-		<div className={Style.grid_container}>
-			{props.users.map((user) => {
-				return (
-					<div key={user.id} className={Style.wrapper_user}>
-						<img className={Style.img_user} src={user.avatar} alt='' />
+let Users = ({ totalUsersCount, pageSize, currentPage, users, onPageChanged, follow, unfollow }) => {
+  let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
-						{user.followed ? (
-							<button
-								onClick={() => {
-									props.unfollow(user.id);
-								}}
-								className={Style.button}>
-								UNFOLLOW
-							</button>
-						) : (
-							<button
-								onClick={() => {
-									props.follow(user.id);
-								}}
-								className={Style.button}>
-								FOLLOW
-							</button>
-						)}
+  let pages = [];
 
-						<div className={Style.desription_user}>
-							<div className={Style.fullname_user}>
-								<span className={Style.fullname}>{user.fullname}</span>
-							</div>
-							<div className={Style.location_user}>
-								<span className={Style.location_country}>{user.location.country} </span>
-								<span className={Style.location_city}>{user.location.city}</span>
-							</div>
-							<div className={Style.status_user}>
-								<span className={Style.status}>{user.status}</span>
-							</div>
-						</div>
-					</div>
-				);
-			})}
-		</div>
-	);
+  for (let i = 1; i <= 30; i++) {
+    pages.push(i);
+  }
+
+  return (
+    <div className={Style.grid_container}>
+      <div>
+        {pages.map((p) => {
+          return (
+            <a href='#'  className={cl(Style.pagination, { [Style.selectedPage]: currentPage === p })}
+              onClick={(e) => {  e.preventDefault(); onPageChanged(p); }}>
+              {p}
+            </a> 
+          );
+        })}
+      </div>
+
+      {users.map((user) => {
+        return (
+          <div key={user.id} className={Style.wrapper_user}>
+            <img className={Style.img_user} src={user.photos.small != null ? user.photos.small : userPhoto} alt='' />
+
+            {user.followed ? 
+            ( <button onClick={() => {unfollow(user.id);}}className={Style.button}>
+                UNFOLLOW
+              </button>
+            ) : (
+              <button onClick={() => {follow(user.id);}}className={Style.button}>
+                  FOLLOW
+              </button>
+            )}
+
+            <div className={Style.desription_user}>
+              <div className={Style.fullname_user}>
+                <span className={Style.fullname}>{user.name}</span>
+              </div>
+              <div className={Style.location_user}>
+                <span className={Style.location_country}>{'user.location.country'} </span>
+                <span className={Style.location_city}>{'user.location.city'}</span>
+              </div>
+              <div className={Style.status_user}>
+                <span className={Style.status}>{user.status}</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Users;

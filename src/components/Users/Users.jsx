@@ -2,21 +2,22 @@
 import React from 'react';
 import Style from './Users.module.css';
 import cl from 'classnames';
-import userPhoto from './../../assets/images/51f6fb256629fc755b8870c801092942.png';
+import userPhoto from './../../assets/images/profileNoAvatar.png';
+import { NavLink } from 'react-router-dom';
 
 let Users = ({ totalUsersCount, pageSize, currentPage, users, onPageChanged, follow, unfollow }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
   let pages = [];
 
-  for (let i = 1; i <= 30; i++) {
+  for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
 
   return (
     <div className={Style.grid_container}>
       <div>
-        {pages.map((p) => {
+        {pages.slice(0,30).map((p) => {
           return (
             <a href='#'  className={cl(Style.pagination, { [Style.selectedPage]: currentPage === p })}
               onClick={(e) => {  e.preventDefault(); onPageChanged(p); }}>
@@ -29,17 +30,16 @@ let Users = ({ totalUsersCount, pageSize, currentPage, users, onPageChanged, fol
       {users.map((user) => {
         return (
           <div key={user.id} className={Style.wrapper_user}>
-            <img className={Style.img_user} src={user.photos.small != null ? user.photos.small : userPhoto} alt='' />
+            <NavLink to={'/profile/' + user.id} className={Style.img_user}>
+              <img  className={Style.img_user} src={user.photos.small != null ? user.photos.small : userPhoto} alt='' />
+            </NavLink>
 
-            {user.followed ? 
-            ( <button onClick={() => {unfollow(user.id);}}className={Style.button}>
-                UNFOLLOW
-              </button>
-            ) : (
-              <button onClick={() => {follow(user.id);}}className={Style.button}>
-                  FOLLOW
-              </button>
-            )}
+            {
+            user.followed ? 
+            ( <button onClick={() => {unfollow(user.id);}}className={Style.button}>UNFOLLOW</button>) 
+            : 
+            (<button onClick={() => {follow(user.id);}}className={Style.button}>FOLLOW</button>)
+            }
 
             <div className={Style.desription_user}>
               <div className={Style.fullname_user}>

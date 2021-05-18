@@ -1,20 +1,21 @@
 import React from 'react';
-import AvatarPlusDescription from './AvatarPlusDescription/AvatarPlusDescription';
-import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileStyles from './Profile.module.css';
+import ProfileDescription from './ProfileDescription/ProfileDescription';
+import MyPosts from './MyPosts/MyPosts';
+import BackgroundProfile from './BackgroundProfile/BackgroundProfile';
+import Preloader from '../common/Preloader/Preloader';
 
-const Profile = (props) => {
-	return (
-		<div>
-			<div className={ProfileStyles.background_profile}>
-				<img
-					className={ProfileStyles.background_profile_img}
-					src='https://image.freepik.com/free-vector/leaves-background-with-metallic-foil_79603-956.jpg'></img>
-			</div>
-			<AvatarPlusDescription />
-			<MyPostsContainer store={props.store} />
-		</div>
-	);
+const Profile = ({ DataPost, newPostText, profile, addPost, updateNewPostText }) => {
+  if (!profile) {
+    return <Preloader />;
+  }
+
+  return (
+    <div>
+      <BackgroundProfile />
+      <ProfileDescription profile={profile} />
+      <MyPosts DataPost={DataPost} newPostText={newPostText} updateNewPostText={updateNewPostText} addPost={addPost} />
+    </div>
+  );
 };
 
 export default Profile;

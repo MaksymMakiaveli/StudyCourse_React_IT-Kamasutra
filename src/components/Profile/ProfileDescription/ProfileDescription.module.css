@@ -16,3 +16,15 @@
 .description_list_item {
   margin: 10px 0px 0px 0px;
 }
+
+.description_namePerson {
+  font-weight: bold;
+}
+
+.status {
+  text-decoration: underline;
+}
+
+.noInformation {
+  color: red;
+}

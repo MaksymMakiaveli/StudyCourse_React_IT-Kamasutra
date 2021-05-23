@@ -1,38 +1,19 @@
-import * as axios from 'axios';
 import React, { Component } from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import { objectAC } from '../../Redux/users-reducer';
 import Preloader from '../common/Preloader/Preloader';
-
 class UsersContainer extends Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-        this.props.toggleIsFetching(false);
-      });
+    this.props.getUsers(this.props.currentPage,this.props.pageSize)
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.toggleIsFetching(true);
-    this.props.setCurrentPage(pageNumber);
-
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.toggleIsFetching(false);
-      });
+    this.props.getUsers(pageNumber,this.props.pageSize)
   };
 
   render() {
-    let { totalUsersCount, pageSize, currentPage, users, follow, unfollow } = this.props;
+    let { totalUsersCount, pageSize, currentPage, users, follow, unfollow,followingInProgress} = this.props;
     let { onPageChanged } = this;
     return (
       <>
@@ -47,6 +28,7 @@ class UsersContainer extends Component {
             onPageChanged={onPageChanged}
             follow={follow}
             unfollow={unfollow}
+            followingInProgress={followingInProgress}
           />
         )}
       </>
@@ -55,8 +37,8 @@ class UsersContainer extends Component {
 }
 
 let mapStateToProps = (state) => {
-  let { users, pageSize, totalUsersCount, currentPage, isFetching } = state.usersPage;
-  return { users, pageSize, totalUsersCount, currentPage, isFetching };
+  let { users, pageSize, totalUsersCount, currentPage, isFetching,followingInProgress} = state.usersPage;
+  return { users, pageSize, totalUsersCount, currentPage, isFetching,followingInProgress};
 };
 
 export default connect(mapStateToProps, objectAC)(UsersContainer);

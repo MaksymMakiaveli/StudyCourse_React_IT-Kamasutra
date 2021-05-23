@@ -18,7 +18,6 @@ let initialState = {
 	],
 };
 
-const siteBarReducer = (state = initialState, action) => {
+export const siteBarReducer = (state = initialState, action) => {
 	return state;
 };
-export default siteBarReducer;

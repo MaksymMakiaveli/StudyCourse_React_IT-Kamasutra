@@ -8,7 +8,6 @@ const Profile = ({ DataPost, newPostText, profile, addPost, updateNewPostText })
   if (!profile) {
     return <Preloader />;
   }
-
   return (
     <div>
       <BackgroundProfile />

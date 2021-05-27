@@ -7,6 +7,7 @@ export default function BackgroundProfile() {
     <>
       <div className={Style.background_profile}>
         <img
+          alt=''
           className={Style.background_profile_img}
           src={Background}
         />

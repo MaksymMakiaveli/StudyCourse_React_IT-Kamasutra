@@ -92,6 +92,7 @@ h6 {
 .cont-content {
   flex-grow: 1;
   margin: 20px 0px 0px 0px;
+  width: 80%;
   
 
   /* border-radius: 0px;

@@ -1,8 +1,9 @@
 import React from 'react';
 import Styles from './ProfileDescription.module.css';
 import profileNoAvatar from '../../../assets/images/profileNoAvatar.png';
+import {ProfileStatus} from './ProfileStatus/ProfileStatus';
 
-const ProfileDescription = ({ profile }) => {
+const ProfileDescription = ({ profile,status,updateStatus }) => {
   let noInformation = <span className={Styles.noInformation}>Информации нету</span>;
 
   return (
@@ -16,16 +17,18 @@ const ProfileDescription = ({ profile }) => {
         <h2 className={Styles.description_namePerson}>{profile.fullName.toUpperCase()}</h2>
         <ul className={Styles.description_list}>
           <li className={Styles.description_list_item}>
-            GitHub: {profile.contacts.github ? <a href='#'>{profile.contacts.github}</a> : noInformation}
+            GitHub: {profile.contacts.github ? <a href='##'>{profile.contacts.github}</a> : noInformation}
           </li>
           <li className={Styles.description_list_item}>
-            Facebook: <a href='#'>{profile.contacts.facebook ? profile.contacts.facebook : noInformation}</a>
+            Facebook: <a href='##'>{profile.contacts.facebook ? profile.contacts.facebook : noInformation}</a>
           </li>
           <li className={Styles.description_list_item}>
-            Vk: <a href='#'>{profile.contacts.vk ? profile.contacts.vk : noInformation}</a>
+            Vk: <a href='##'>{profile.contacts.vk ? profile.contacts.vk : noInformation}</a>
           </li>
           <li className={Styles.description_list_item}>
-            Status: <span className={Styles.status}>{profile.lookingForAJobDescription}</span>
+            
+            Status: <span className={Styles.status}><ProfileStatus status={status} updateStatus={updateStatus}/></span>
+            
           </li>
         </ul>
       </div>

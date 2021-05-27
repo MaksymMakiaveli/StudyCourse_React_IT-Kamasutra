@@ -5,6 +5,7 @@ const CreatePost = (props) => {
 	return (
 		<div className={PostStyle.post}>
 			<img
+				alt=''
 				className={PostStyle.post_avatar}
 				src='https://image.freepik.com/free-vector/neon-lights-background-theme_52683-44625.jpg'></img>
 			<p className={PostStyle.post_text}>{props.post}</p>

@@ -6,12 +6,12 @@ let SideBarFriends = ({ DataFriends }) => {
     <>
       {DataFriends.map((element) => {
         return (
-          <div href='#' className={friendStyles.wrapper}>
-            <a href='#'>
+          <div key={element.id} className={friendStyles.wrapper}>
+            <a href='##'>
               <img className={friendStyles.avatar} src={element.avatar} alt='' />
             </a>
             <div>
-              <a href='' className={friendStyles.nickname}>
+              <a href='##' className={friendStyles.nickname}>
                 <p>{element.name}</p>
               </a>
             </div>

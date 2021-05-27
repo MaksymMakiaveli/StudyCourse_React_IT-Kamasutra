@@ -2,8 +2,7 @@
 import React from 'react';
 import Style from './Users.module.css';
 import cl from 'classnames';
-import userPhoto from './../../assets/images/profileNoAvatar.png';
-import { NavLink } from 'react-router-dom';
+import { UsersCard } from '../common/UsersCard/UsersCard';
 
 let Users = ({
   totalUsersCount,
@@ -24,17 +23,19 @@ let Users = ({
   }
 
   return (
-    <div className={Style.grid_container}>
-      <div>
+    <>
+      <div className={Style.box_pagination}>
         {pages.slice(0, 30).map((p) => {
           return (
             <a
+              key={p}
               href='#'
-              className={cl(Style.pagination, { [Style.selectedPage]: currentPage === p })}
               onClick={(e) => {
                 e.preventDefault();
                 onPageChanged(p);
               }}
+              className={cl(Style.pagination, { [Style.selectedPage]: currentPage === p })}
+             
             >
               {p}
             </a>
@@ -42,47 +43,14 @@ let Users = ({
         })}
       </div>
 
-      {users.map((user) => {
-        return (
-          <div key={user.id} className={Style.wrapper_user}>
-            <NavLink to={'/profile/' + user.id} className={Style.img_user}>
-              <img className={Style.img_user} src={user.photos.small != null ? user.photos.small : userPhoto} alt='' />
-            </NavLink>
-
-            {user.followed ? (
-              <button
-                disabled={followingInProgress.some((id) => id === user.id)}
-                onClick={() => unfollow(user.id)}
-                className={Style.button}
-              >
-                UNFOLLOW
-              </button>
-            ) : (
-              <button
-                disabled={followingInProgress.some((id) => id === user.id)}
-                onClick={() => follow(user.id)}
-                className={Style.button}
-              >
-                FOLLOW
-              </button>
-            )}
-
-            <div className={Style.description_user}>
-              <div className={Style.fullname_user}>
-                <span className={Style.fullname}>{user.name}</span>
-              </div>
-              <div className={Style.location_user}>
-                <span className={Style.location_country}>{'user.location.country'} </span>
-                <span className={Style.location_city}>{'user.location.city'}</span>
-              </div>
-              <div className={Style.status_user}>
-                <span className={Style.status}>{user.status}</span>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+      <div className={Style.grid_container}>
+        {users.map((user) => {
+          return (
+            <UsersCard key={user.id} user={user} follow={follow} unfollow={unfollow} followingInProgress={followingInProgress} />
+          );
+        })}
+      </div>
+    </>
   );
 };
 

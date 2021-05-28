@@ -67,6 +67,12 @@
   text-decoration: underline;
 }
 
+.error_message{
+  margin: 20px 0 0 0;
+  color: #ae1100;
+  text-decoration: underline;
+}
+
 .login_button:hover {
   box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }

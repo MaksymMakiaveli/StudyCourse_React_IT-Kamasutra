@@ -11,7 +11,7 @@ export const BtnAuthFalse = () => {
   );
 };
 
-export const BtnAuthTrue = ({profile}) => {
+export const BtnAuthTrue = () => {
   return (
     <div className={cl(Style.btn_auth)}>
       <Button label='Submit' icon='pi pi-check' className={cl('p-button-success')} />

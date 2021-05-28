@@ -6,7 +6,6 @@ import Styles from './Header.module.css';
 import profileNoAvatar from '../../assets/images/profileNoAvatar.png';
 
 const Header = ({ isAuth, logoutUser,profile}) => {
-  debugger
   return (
     <header className={Styles.header}>
       <a href='##'>

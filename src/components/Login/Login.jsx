@@ -16,6 +16,7 @@ export class Login extends Component {
   render() {
     if (this.props.isAuth) return <Redirect to='/profile' />;
     return (
+      
       <>
         <Formik
           initialValues={{ email: '', password: '' }}
@@ -28,7 +29,9 @@ export class Login extends Component {
           }}
           validationSchema={validationLogin}
         >
-          {({ values, errors, touched, isValid, handleChange, handleBlur, handleSubmit, dirty }) => (
+          
+          {({ values, errors, touched, isValid, handleChange, handleBlur, handleSubmit, dirty}) => (
+            
             <Form onSubmit={handleSubmit} className={Style.login_form}>
               <div className={Style.segment}>
                 <h1 className={Style.title_login}>Sign up</h1>

@@ -13,7 +13,7 @@ const Profile = ({ DataPost, newPostText, profile, addPost, updateNewPostText,st
     <div>
       <BackgroundProfile />
       <ProfileDescription profile={profile} status={status} updateStatus={updateStatus}/>
-      <MyPosts DataPost={DataPost} newPostText={newPostText} updateNewPostText={updateNewPostText} addPost={addPost} />
+      <MyPosts DataPost={DataPost} profile={profile} newPostText={newPostText} updateNewPostText={updateNewPostText} addPost={addPost} />
     </div>
   );
 };

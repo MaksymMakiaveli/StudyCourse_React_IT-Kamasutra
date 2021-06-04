@@ -1,9 +1,9 @@
 import React from 'react';
 import Styles from './ProfileDescription.module.css';
 import profileNoAvatar from '../../../assets/images/profileNoAvatar.png';
-import {ProfileStatus} from './ProfileStatus/ProfileStatus';
+import { ProfileStatus } from './ProfileStatus/ProfileStatusHock';
 
-const ProfileDescription = ({ profile,status,updateStatus }) => {
+const ProfileDescription = ({ profile, status, updateStatus }) => {
   let noInformation = <span className={Styles.noInformation}>Информации нету</span>;
 
   return (
@@ -26,9 +26,10 @@ const ProfileDescription = ({ profile,status,updateStatus }) => {
             Vk: <a href='##'>{profile.contacts.vk ? profile.contacts.vk : noInformation}</a>
           </li>
           <li className={Styles.description_list_item}>
-            
-            Status: <span className={Styles.status}><ProfileStatus status={status} updateStatus={updateStatus}/></span>
-            
+            Status:{' '}
+            <span className={Styles.status}>
+              <ProfileStatus status={status} updateStatus={updateStatus} />
+            </span>
           </li>
         </ul>
       </div>

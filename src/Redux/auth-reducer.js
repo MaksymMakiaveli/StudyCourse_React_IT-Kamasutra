@@ -2,7 +2,6 @@ import { authAPI } from '../api/api';
 
 // ! Auth
 const SET_USER_DATA = 'SET_USER_DATA';
-const ERROR_LOGIN = 'ERROR_LOGIN';
 
 let initialState = {
   id: null,
@@ -31,33 +30,27 @@ export let setAuthUserData = (id, email, login, isAuth) => ({
   payload: { id, email, login, isAuth },
 });
 
-export const getAuthUser = () => {
-  return (dispatch) => {
-    return authAPI.getAuth().then((response) => {
-      if (response.data.resultCode === 0) {
-        let { id, email, login } = response.data.data;
-        dispatch(setAuthUserData(id, email, login, true));
-      }
-    });
-  };
+export const getAuthUser = () => async (dispatch) => {
+  let response = await authAPI.getAuth();
+
+  if (response.data.resultCode === 0) {
+    let { id, email, login } = response.data.data;
+    dispatch(setAuthUserData(id, email, login, true));
+  }
 };
 
-export const getLoginUser = (email, password) => {
-  return (dispatch) => {
-    authAPI.loginAuth(email, password).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(getAuthUser());
-      }
-    });
-  };
+export const getLoginUser = (email, password) => async (dispatch) => {
+  let response = await authAPI.loginAuth(email, password);
+
+  if (response.data.resultCode === 0) {
+    dispatch(getAuthUser());
+  }
 };
 
-export const logoutUser = () => {
-  return (dispatch) => {
-    authAPI.logoutAuth().then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
-      }
-    });
-  };
+export const logoutUser = () => async (dispatch) => {
+  let response = await authAPI.logoutAuth();
+
+  if (response.data.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
 };

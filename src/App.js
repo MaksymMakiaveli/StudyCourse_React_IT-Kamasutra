@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route } from 'react-router';
+import { Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -18,20 +18,17 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import Preloader from './components/common/Preloader/Preloader';
-import  {initialize} from './Redux/app-reducer'
-
-
+import { initialize } from './Redux/app-reducer';
+import { compose } from 'redux';
 
 class App extends Component {
-
-
-  componentDidMount(){
-    this.props.initialize()
+  componentDidMount() {
+    this.props.initialize();
   }
-  
+
   render() {
-    let { initialized } = this.props
-    if(!initialized) return <Preloader/>
+    let { initialized } = this.props;
+    if (!initialized) return <Preloader />;
     return (
       <div className='app-wrapper'>
         <HeaderContainer />
@@ -58,5 +55,4 @@ let mapDispatchToProps = (state) => {
   let { initialized } = state.app;
   return { initialized };
 };
-
-export default connect(mapDispatchToProps, {initialize})(App);
+export default compose(withRouter, connect(mapDispatchToProps, { initialize }))(App);

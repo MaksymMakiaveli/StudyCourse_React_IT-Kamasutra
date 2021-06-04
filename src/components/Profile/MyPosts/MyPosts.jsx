@@ -2,7 +2,7 @@ import React from 'react';
 import MyPostsStyle from './MyPosts.module.css';
 import CreatePost from './Post/Post';
 
-const MyPosts = ({ DataPost, newPostText, addPost, updateNewPostText,profile}) => {
+const MyPosts = ({ DataPost, newPostText, addPost, updateNewPostText, profile }) => {
   let arrPosts = DataPost.map((post) => {
     return <CreatePost key={post.id} profile={profile} post={post.post} />;
   });

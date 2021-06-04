@@ -6,7 +6,7 @@ import userPhoto from './../../../assets/images/profileNoAvatar.png';
 export function UsersCard({ user, follow, unfollow, followingInProgress }) {
   return (
     <>
-      <section key={user.id} className={Style.sec}>
+      <section className={Style.sec}>
         <div className={Style.card}>
           <div className={Style.content}>
             <div className={Style.imgText}>

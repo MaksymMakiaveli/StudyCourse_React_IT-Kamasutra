@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import Logo from './../../logo.png';
-import HeaderStyles from "./Header.module.css";
-
-
-const Header = () => {
-  return (
-    <header className={HeaderStyles.header}>
-      <a href='#'><img src={Logo} alt="logo" className={HeaderStyles.header_logo} /></a>
-    </header>
-  )
-}
-
-export default Header;
-=======
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { BtnAuthTrue, BtnAuthFalse, BtnLogout } from '../common/BtnAuth/BtnAuth';
@@ -21,7 +5,7 @@ import Logo from './../../logo.png';
 import Styles from './Header.module.css';
 import profileNoAvatar from '../../assets/images/profileNoAvatar.png';
 
-const Header = ({ isAuth, logoutUser,profile}) => {
+const Header = ({ isAuth, logoutUser, profile }) => {
   return (
     <header className={Styles.header}>
       <a href='##'>
@@ -30,11 +14,10 @@ const Header = ({ isAuth, logoutUser,profile}) => {
       <div className={Styles.container}>
         <img src={profileNoAvatar} alt='' className={Styles.avatarHeader} />
         <NavLink to={'/login'}>{isAuth ? <BtnAuthTrue profile={profile} /> : <BtnAuthFalse />}</NavLink>
-        <BtnLogout logoutUser={logoutUser}/>
+        <BtnLogout logoutUser={logoutUser} />
       </div>
     </header>
   );
 };
 
 export default Header;
->>>>>>> lesson93Pagination

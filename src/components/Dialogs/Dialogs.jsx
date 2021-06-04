@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import Chats from "./Chats/Chats";
-import DialogsStyle from "./Dialogs.module.css"
-import Message from "./Message/Message";
-
-
-const Dialogs = (props) => {
-  return (
-    <div className={DialogsStyle.wrapper_dialogs}>
-      <Chats />
-      <Message />
-    </div>
-  )
-}
-
-export default Dialogs;
-=======
 import React from 'react';
 import { Redirect } from 'react-router';
 import CreateChats from './Chats/Chats';
@@ -32,15 +14,15 @@ const Dialogs = ({ DataMessage, DataChats, newMessageText, addMessage, messageCh
 
   let onAddMessage = (e) => {
     e.preventDefault();
-		newMessageText ? addMessage() : alert('Поле ввода не должно быть пустое');
+    newMessageText ? addMessage() : alert('Поле ввода не должно быть пустое');
   };
   let onMessageChange = (e) => {
     let sms = e.target.value;
     messageChange(sms);
   };
 
-  if(!isAuth) return <Redirect to = '/login'/>
-  return (  
+  if (!isAuth) return <Redirect to='/login' />;
+  return (
     <>
       <div className={DialogsStyle.wrapper_dialogs}>
         <div className={DialogsStyle.container_chats}>{arrChats}</div>
@@ -64,4 +46,3 @@ const Dialogs = ({ DataMessage, DataChats, newMessageText, addMessage, messageCh
 };
 
 export default Dialogs;
->>>>>>> lesson93Pagination

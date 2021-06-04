@@ -1,15 +1,7 @@
-import React from "react";
-<<<<<<< HEAD
-import MusicStyles from "./Music.module.css";
-=======
->>>>>>> lesson93Pagination
+import React from 'react';
 
 const Music = () => {
-  return (
-    <div>
-      Music
-    </div>
-  )
-}
+  return <div>Music</div>;
+};
 
 export default Music;

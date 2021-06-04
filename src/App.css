@@ -75,15 +75,12 @@ h6 {
 }
 /* End nullStyle */
 
-.app-wrapper {
-}
-
 .content-wrapper {
   display: flex;
-  max-width: 1390px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 20px 20px;
 }
 
 .cont-nav {
@@ -92,11 +89,7 @@ h6 {
 .cont-content {
   flex-grow: 1;
   margin: 20px 0px 0px 0px;
-
-  /* border-radius: 0px;
-  background: #e0e0e0;
-  box-shadow: -37px -37px 73px #989898, 37px 37px 73px #ffffff; */
-
+  width: 80%;
   background: rgba(182, 203, 215, 0.3);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(20px);

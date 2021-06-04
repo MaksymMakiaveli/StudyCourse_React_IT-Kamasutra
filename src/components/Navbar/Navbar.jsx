@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { NavLink } from "react-router-dom";
 import NavbarStyles from "./Navbar.module.css";
@@ -25,3 +26,20 @@ const Navbar = () => {
 }
 
 export default Navbar;
+=======
+import React from 'react';
+import NavBarItems from './NavBarItems/NavBarItems';
+import NavBarFriends from './NavBarFriends/NavBarFriends';
+
+const Navbar = ({ DataFriends }) => {
+  return (
+    <>
+      <NavBarItems>
+        <NavBarFriends DataFriends={DataFriends} />
+      </NavBarItems>
+    </>
+  );
+};
+
+export default Navbar;
+>>>>>>> lesson93Pagination

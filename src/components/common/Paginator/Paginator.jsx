@@ -1,6 +1,4 @@
 import React from 'react';
-import Style from './Paginator.module.css';
-import cl from 'classnames';
 import Pagination from '@material-ui/lab/Pagination';
 
 export const PaginatorUI = ({ totalUsersCount, pageSize, currentPage, onPageChanged }) => {

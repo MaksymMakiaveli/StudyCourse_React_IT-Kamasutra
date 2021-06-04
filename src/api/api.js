@@ -15,12 +15,15 @@ export const profileAPI = {
   getProfile(userId) {
     return instance.get(`profile/${userId}`);
   },
-  getStatus(userId){
+  getStatus(userId) {
     return instance.get(`profile/status/${userId}`);
   },
-  updateStatus(status){
-    return instance.put(`profile/status`, {status});
-  }
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status });
+  },
+  avatarProfile(avatar) {
+    return instance.put(`profile/photo`, { avatar });
+  },
 };
 export const followAPI = {
   clickFollow(userId) {
@@ -32,15 +35,15 @@ export const followAPI = {
 };
 
 export const authAPI = {
-  getAuth(){
-    return instance.get('auth/me')
-  },
-  
-  loginAuth(email,password){
-    return instance.post('auth/login', {email,password})
+  getAuth() {
+    return instance.get('auth/me');
   },
 
-  logoutAuth(){
-    return instance.delete('auth/login')
-  }
+  loginAuth(email, password) {
+    return instance.post('auth/login', { email, password });
+  },
+
+  logoutAuth() {
+    return instance.delete('auth/login');
+  },
 };

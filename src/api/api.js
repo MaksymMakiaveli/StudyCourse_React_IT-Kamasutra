@@ -22,7 +22,14 @@ export const profileAPI = {
     return instance.put(`profile/status`, { status });
   },
   avatarProfile(avatar) {
-    return instance.put(`profile/photo`, { avatar });
+    let formData = new FormData();
+    formData.append('image', avatar);
+    return instance.put(`profile/photo`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  updateProfile(profile) {
+    return instance.put(`profile`, profile);
   },
 };
 export const followAPI = {
@@ -39,11 +46,17 @@ export const authAPI = {
     return instance.get('auth/me');
   },
 
-  loginAuth(email, password) {
-    return instance.post('auth/login', { email, password });
+  loginAuth(email, password, captcha = null) {
+    return instance.post('auth/login', { email, password, captcha });
   },
 
   logoutAuth() {
     return instance.delete('auth/login');
+  },
+};
+
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get('security/get-captcha-url');
   },
 };

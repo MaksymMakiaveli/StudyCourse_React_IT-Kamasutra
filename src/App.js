@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route, withRouter } from 'react-router';
+import { Redirect, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -9,7 +9,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import Music from './components/Music/Music';
 import News from './components/News/News';
-import Settings from './components/Settings/Settings';
+import { Settings } from './components/Settings/Settings';
 import { LoginContainer } from './components/Login/Login';
 import HeaderContainer from './components/Header/HeaderContainer';
 
@@ -20,7 +20,6 @@ import 'primeicons/primeicons.css';
 import Preloader from './components/common/Preloader/Preloader';
 import { initialize } from './Redux/app-reducer';
 import { compose } from 'redux';
-
 class App extends Component {
   componentDidMount() {
     this.props.initialize();
@@ -51,8 +50,8 @@ class App extends Component {
   }
 }
 
-let mapDispatchToProps = (state) => {
-  let { initialized } = state.app;
+let mapStateToProps = (state) => {
+  const { initialized } = state.app;
   return { initialized };
 };
-export default compose(withRouter, connect(mapDispatchToProps, { initialize }))(App);
+export default compose(withRouter, connect(mapStateToProps, { initialize }))(App);

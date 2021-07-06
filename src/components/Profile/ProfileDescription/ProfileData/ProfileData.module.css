@@ -1,0 +1,71 @@
+.description_text {
+}
+.title_contacts {
+  margin: 5px 5px 0px 0px;
+  font-weight: bold;
+}
+.description_list_item {
+  margin: 10px 20px 0px 0px;
+}
+
+.description_namePerson {
+  font-weight: bold;
+}
+
+.status {
+  text-decoration: underline;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.edit_button {
+  width: 150px;
+  height: 35px;
+  margin: 10px 0px 0px 0px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+  background-size: 200% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  transition: 500ms;
+}
+
+.edit_button:before {
+  content: 'EDIT';
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 142px;
+  height: 25px;
+  background-color: #1b2845;
+  background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+  transition: 500ms;
+}
+
+.edit_button:hover {
+  background-position: right;
+}
+
+.edit_button:hover:before {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.edit_button:focus {
+  outline: none;
+}

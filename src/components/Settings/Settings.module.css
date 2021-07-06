@@ -1,0 +1,42 @@
+.wrapper__settings {
+  padding: 30px 50px;
+}
+
+.input__settings_profile {
+  margin: 0px 20px 0px 0px;
+}
+
+.wrapper__required_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper__input_description {
+  margin: 0px 10px 0px 0px;
+}
+
+.wrapper__input_description:nth-child(3) {
+  margin: 0px 0px 0px 0px;
+}
+
+.label_checkbox {
+  margin: 0px 0px 0px 20px;
+}
+
+.wrapper__contacts_input {
+  margin: 20px 0px 20px 0px;
+  display: grid;
+  height: auto;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.wrapper__button_settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

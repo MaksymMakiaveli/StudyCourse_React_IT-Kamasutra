@@ -12,18 +12,16 @@ const validationLogin = yup.object().shape({
   password: yup.string().required('Заполните поле').min(6, 'Mинимум 6 символов'),
 });
 
-export const Login = ({ isAuth, getLoginUser }) => {
+export const Login = ({ isAuth, getLoginUser, captchaUrl }) => {
   if (isAuth) return <Redirect to='/profile' />;
   return (
     <>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '', captcha: '' }}
         validateOnBlur
         onSubmit={(values, { setSubmitting }) => {
-          getLoginUser(values.email, values.password);
+          getLoginUser(values.email, values.password, values.captcha);
           setSubmitting(false);
-          values.email = '';
-          values.password = '';
         }}
         validationSchema={validationLogin}
       >
@@ -57,6 +55,18 @@ export const Login = ({ isAuth, getLoginUser }) => {
               />
               {touched.password && errors.password && <p className={Style.error}>{errors.password}</p>}
             </label>
+            {captchaUrl && <img src={captchaUrl} alt='captcha'/>}
+            {captchaUrl && (
+              <input
+                className={cl(Style.login_input, { [Style.login_input_error]: errors.password })}
+                type='text'
+                name='captcha'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.captcha}
+                placeholder='Captcha'
+              />
+            )}
 
             <button className={Style.login_button} type='submit' disabled={!isValid && !dirty}>
               Log in
@@ -69,8 +79,8 @@ export const Login = ({ isAuth, getLoginUser }) => {
 };
 
 let mapStateToProps = (state) => {
-  let { isAuth } = state.auth;
-  return { isAuth };
+  let { isAuth, captchaUrl } = state.auth;
+  return { isAuth, captchaUrl };
 };
 
 export let LoginContainer = connect(mapStateToProps, { getLoginUser })(Login);

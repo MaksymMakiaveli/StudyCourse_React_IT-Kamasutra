@@ -12,7 +12,7 @@ export function UsersCard({ user, follow, unfollow, followingInProgress }) {
             <div className={Style.imgText}>
               <div className={Style.imgBx}>
                 <NavLink to={'/profile/' + user.id} className={Style.img_user}>
-                  <img src={user.photos.small != null ? user.photos.small : userPhoto} alt='' />
+                  <img src={user.photos.small || userPhoto} alt='' />
                 </NavLink>
               </div>
               <NavLink to={'/profile/' + user.id}>

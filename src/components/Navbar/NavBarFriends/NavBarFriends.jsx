@@ -1,18 +1,26 @@
 import React from 'react';
 import friendStyles from './NavBarFriends.module.css';
+import userPhoto from '../../../assets/images/profileNoAvatar.png';
+import { NavLink } from 'react-router-dom';
 
-let SideBarFriends = ({ DataFriends }) => {
+let SideBarFriends = ({ users }) => {
   return (
     <>
-      {DataFriends.map((element) => {
+      {users.slice(0, 3).map((user) => {
         return (
-          <div key={element.id} className={friendStyles.wrapper}>
+          <div key={user.id} className={friendStyles.wrapper}>
             <a href='##'>
-              <img className={friendStyles.avatar} src={element.avatar} alt='' />
+              <img
+                className={friendStyles.avatar}
+                src={user.photos.small != null ? user.photos.small : userPhoto}
+                alt=''
+              />
             </a>
             <div>
               <a href='##' className={friendStyles.nickname}>
-                <p>{element.name}</p>
+                <NavLink to={'/profile/' + user.id}>
+                  <p>{user.name}</p>
+                </NavLink>
               </a>
             </div>
           </div>

@@ -1,38 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styles from './ProfileDescription.module.css';
-import profileNoAvatar from '../../../assets/images/profileNoAvatar.png';
-import { ProfileStatus } from './ProfileStatus/ProfileStatusHock';
+import { ProfileAvatar } from './ProfileAvatar/ProfileAvatar';
+import { ProfileData, ProfileDataForm } from './ProfileData/ProfileData';
 
-const ProfileDescription = ({ profile, status, updateStatus }) => {
-  let noInformation = <span className={Styles.noInformation}>Информации нету</span>;
+const ProfileDescription = ({ profile, status, updateStatus, isOwner, savePhoto, myProfile }) => {
+  let [editMode, setEditMode] = useState(false);
 
   return (
     <div className={Styles.wrapper_description}>
-      <img
-        src={profile.photos.large ? profile.photos.large : profileNoAvatar}
-        alt=''
-        className={Styles.description_avatar}
-      />
-      <div className={Styles.description_text}>
-        <h2 className={Styles.description_namePerson}>{profile.fullName.toUpperCase()}</h2>
-        <ul className={Styles.description_list}>
-          <li className={Styles.description_list_item}>
-            GitHub: {profile.contacts.github ? <a href='##'>{profile.contacts.github}</a> : noInformation}
-          </li>
-          <li className={Styles.description_list_item}>
-            Facebook: <a href='##'>{profile.contacts.facebook ? profile.contacts.facebook : noInformation}</a>
-          </li>
-          <li className={Styles.description_list_item}>
-            Vk: <a href='##'>{profile.contacts.vk ? profile.contacts.vk : noInformation}</a>
-          </li>
-          <li className={Styles.description_list_item}>
-            Status:{' '}
-            <span className={Styles.status}>
-              <ProfileStatus status={status} updateStatus={updateStatus} />
-            </span>
-          </li>
-        </ul>
-      </div>
+      <ProfileAvatar profile={profile} isOwner={isOwner} myProfile={myProfile} savePhoto={savePhoto} />
+      {editMode ? (
+        <ProfileDataForm
+          isOwner={isOwner}
+          status={status}
+          updateStatus={updateStatus}
+          savePhoto={savePhoto}
+          profile={profile}
+          exitToEditMode={() => {
+            setEditMode(false);
+          }}
+        />
+      ) : (
+        <ProfileData
+          goToEditMode={() => {
+            setEditMode(true);
+          }}
+          isOwner={isOwner}
+          status={status}
+          updateStatus={updateStatus}
+          savePhoto={savePhoto}
+          profile={profile}
+        />
+      )}
     </div>
   );
 };

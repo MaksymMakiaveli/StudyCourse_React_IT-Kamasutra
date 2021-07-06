@@ -2,11 +2,11 @@ import React from 'react';
 import NavBarItems from './NavBarItems/NavBarItems';
 import NavBarFriends from './NavBarFriends/NavBarFriends';
 
-const Navbar = ({ DataFriends }) => {
+const Navbar = ({ DataFriends, users }) => {
   return (
     <>
       <NavBarItems>
-        <NavBarFriends DataFriends={DataFriends} />
+        <NavBarFriends users={users} />
       </NavBarItems>
     </>
   );

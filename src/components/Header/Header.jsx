@@ -5,7 +5,8 @@ import Logo from './../../logo.png';
 import Styles from './Header.module.css';
 import profileNoAvatar from '../../assets/images/profileNoAvatar.png';
 
-const Header = ({ isAuth, logoutUser, profile }) => {
+const Header = ({ isAuth, logoutUser, myProfile }) => {
+  if (!myProfile) return '';
   return (
     <header className={Styles.header}>
       <a href='##'>
@@ -13,7 +14,9 @@ const Header = ({ isAuth, logoutUser, profile }) => {
       </a>
       <div className={Styles.container}>
         <img src={profileNoAvatar} alt='' className={Styles.avatarHeader} />
-        <NavLink to={'/login'}>{isAuth ? <BtnAuthTrue profile={profile} /> : <BtnAuthFalse />}</NavLink>
+        <NavLink to={'/login'}>
+          {isAuth ? <BtnAuthTrue profile={myProfile} /> : <BtnAuthFalse />}
+        </NavLink>
         <BtnLogout logoutUser={logoutUser} />
       </div>
     </header>
